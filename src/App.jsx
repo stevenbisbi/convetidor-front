@@ -77,17 +77,20 @@ const UnitConverter = () => {
     setError("");
 
     try {
-      const response = await fetch({
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          value: parseFloat(inputValue),
-          from: fromUnit,
-          to: toUnit,
-        }),
-      });
+      const response = await fetch(
+        `https://convetidor-back-plz5hnlcr-stevens-projects-b7d142ef.vercel.app/api/convert/${activeTab}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            value: parseFloat(inputValue),
+            from: fromUnit,
+            to: toUnit,
+          }),
+        }
+      );
 
       const data = await response.json();
 
