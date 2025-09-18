@@ -77,20 +77,17 @@ const UnitConverter = () => {
     setError("");
 
     try {
-      const response = await fetch(
-        `http://localhost:3001/api/convert/${activeTab}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            value: parseFloat(inputValue),
-            from: fromUnit,
-            to: toUnit,
-          }),
-        }
-      );
+      const response = await fetch({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          value: parseFloat(inputValue),
+          from: fromUnit,
+          to: toUnit,
+        }),
+      });
 
       const data = await response.json();
 
