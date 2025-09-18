@@ -78,7 +78,7 @@ const UnitConverter = () => {
 
     try {
       const response = await fetch(
-        `https://convetidor-back-plz5hnlcr-stevens-projects-b7d142ef.vercel.app/api/convert/${activeTab}`,
+        `https://convetidor-back.vercel.app/api/convert/${activeTab}`,
         {
           method: "POST",
           headers: {
