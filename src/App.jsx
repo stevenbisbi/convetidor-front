@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 
-const UnitConverter = () => {
+import { getTabIcon, getTabTitle } from "./utils/icons";
+import { units } from "./utils/units";
+
+const App = () => {
   const [activeTab, setActiveTab] = useState("time");
   const [inputValue, setInputValue] = useState("");
   const [fromUnit, setFromUnit] = useState("");
@@ -10,53 +13,7 @@ const UnitConverter = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Definir las unidades disponibles con sus labels
-  const units = {
-    time: {
-      hours: "Horas",
-      days: "Días",
-      months: "Meses",
-      years: "Años",
-    },
-    weight: {
-      kg: "Kilogramos",
-      g: "Gramos",
-      lb: "Libras",
-    },
-    temperature: {
-      celsius: "Celsius (°C)",
-      fahrenheit: "Fahrenheit (°F)",
-      kelvin: "Kelvin (K)",
-    },
-    currency: {
-      usd: "Dólar USD",
-      cop: "Peso COP",
-      eur: "Euro EUR",
-    },
-  };
-
-  // Icons for tabs using Bootstrap Icons
-  const getTabIcon = (tab) => {
-    const icons = {
-      time: "bi-clock",
-      weight: "bi-speedometer2",
-      temperature: "bi-thermometer-half",
-      currency: "bi-currency-dollar",
-    };
-    return icons[tab];
-  };
-
-  const getTabTitle = (tab) => {
-    const titles = {
-      time: "Tiempo",
-      weight: "Peso",
-      temperature: "Temperatura",
-      currency: "Moneda",
-    };
-    return titles[tab];
-  };
-
-  // Inicializar unidades por defecto cuando cambia la pestaña
+  // Inicializa unidades al cambiar pestaña
   useEffect(() => {
     const unitKeys = Object.keys(units[activeTab]);
     setFromUnit(unitKeys[0]);
@@ -288,13 +245,9 @@ const UnitConverter = () => {
 
                 {/* Convert Button */}
                 <button
-                  className="btn btn-primary btn-lg w-100 py-3"
+                  className="btn btn-primary btn-lg w-100 py-3 converter-botton"
                   onClick={handleConvert}
                   disabled={loading}
-                  style={{
-                    borderRadius: "15px",
-                    background: "linear-gradient(45deg, #6c63ff, #764ba2)",
-                  }}
                 >
                   {loading ? (
                     <>
@@ -398,4 +351,4 @@ const UnitConverter = () => {
   );
 };
 
-export default UnitConverter;
+export default App;
